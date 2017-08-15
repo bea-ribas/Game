@@ -1,25 +1,28 @@
 package theGameModel;
 
-import java.util.Date;
-
-public class Human extends Players
-{
-	String orderName;
-
-
-	public Human(String name, Date bornDate, boolean task, String orderName) 
-	{
-		super(name, bornDate, task);
-		this.orderName = orderName;
+public class Human {
+	
+	private String name;
+	private String bornDate;
+	
+	
+	public String getBornDate() {
+		
+		return bornDate;
 	}
-
-	public String getOrderName() 
-	{
-		return orderName;
+	
+	public void setBornDate(String bornDate) {
+		
+		this.bornDate = bornDate;
 	}
-
-	public void setOrderName(String orderName) 
-	{
-		this.orderName = orderName;
+	
+	public String getName() {
+		
+		return name;
+	}
+	
+	public void setName(String name) {
+		
+		this.name = name;
 	}
 }

@@ -1,49 +1,44 @@
 package theGameModel;
 
-import java.util.Date;
+import java.util.Set;
 
-public class Vampire extends Players
-{
-	int hemoglobinLevel;
-	String clanName;
-	boolean relationSlaves;
+public class Vampire extends Monster{
 	
+	private final String food = "blood";
 	
-	public Vampire(String name, Date bornDate, int hemoglobinLevel, String clanName, boolean relationSlaves) 
-	{
-		super(name, bornDate, task);
-		this.hemoglobinLevel = hemoglobinLevel;
-		this.clanName = clanName;
-		this.relationSlaves = relationSlaves;
+	private Set<Human> humansBitten;
+	
+	public VampireClan getClan() {
+		
+		return (VampireClan) super.clan;
+	}
+	
+	public void setClan(VampireClan clan) {
+		
+		super.clan = clan;
+	}
+	
+	public String getFood() {
+		
+		return food;
 	}
 
-	public int getHemoglobinLevel() 
-	{
-		return hemoglobinLevel;
+	public Set<Human> getHumansBitten() {
+		
+		return humansBitten;
+	}
+
+	public void setHumansBitten(Set<Human> humansBitten) {
+		
+		this.humansBitten = humansBitten;
 	}
 	
-	public void setHemoglobinLevel(int hemoglobinLevel) 
-	{
-		this.hemoglobinLevel = hemoglobinLevel;
-	}
-	
-	public String getClanName() 
-	{
-		return clanName;
-	}
-	
-	public void setClanName(String clanName) 
-	{
-		this.clanName = clanName;
-	}
-	
-	public boolean isRelationSlaves() 
-	{
-		return relationSlaves;
-	}
-	
-	public void setRelationSlaves(boolean relationSlaves) 
-	{
-		this.relationSlaves = relationSlaves;
+	public boolean executeTasks() {
+		boolean hasPerformed = true;
+		for(Task task : tasks) {
+			
+			hasPerformed &= task.execute();
+		}
+		return hasPerformed;
 	}
 }
